@@ -1,0 +1,304 @@
+.main {
+  background-color: #39396e;
+  border-radius: 10px;
+  padding: 0;
+  color: #fff;
+}
+
+.main .logout {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.main .logout a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header {
+  margin: 20px 0;
+}
+
+.main .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main .header .icon {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f9b01f;
+
+  color: #fff;
+  font-size: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.main .header .search {
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+
+  background-color: #d7c4dfad;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.main .header .search input {
+  width: 80%;
+  padding: 5px 10px;
+
+  border-radius: 10px;
+
+  outline: 0;
+  border: 0;
+
+  font-size: 20px;
+}
+
+.main .search i {
+  background-color: transparent;
+  border: 0 none;
+  color: #39396e;
+
+  margin-left: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.main .resultadoPesquisa {
+  width: 90%;
+}
+
+.main .resultadoPesquisa ul{
+  border-radius: 10px;
+  background-color: #d7c4dfad; 
+  padding-left: 10px; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+}
+
+.main .resultadoPesquisa li {
+  list-style: none; 
+  font-size: 20px;
+}
+
+.main .resultadoPesquisa a {
+  display: flex;
+  color: #fff;
+  font-size: 20px;
+  
+}
+.main .resultadoPesquisa a:hover {
+  background-color: #6060a0;
+  cursor: pointer;
+}
+
+.content {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.content span {
+  margin: 10px;
+  font-size: 22px;
+}
+
+.main .contatos {
+  background-color: #d7c4dfad;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.main .lista li {
+  list-style: none;
+  border-bottom: 1px solid #d7c4df;  
+}
+
+.main .lista li:last-child {
+  border-bottom: 0;
+}
+
+.main .lista a {
+  display: flex;
+  color: #fff;
+  padding: 15px;
+}
+
+.main .lista a:hover {
+  background-color: #6060a0;
+  cursor: pointer;
+}
+
+
+.main .mais {
+  position: fixed;
+  padding: 10px;
+  bottom: 10px;
+
+  margin-right: 2%;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;  
+}
+
+.main .mais a {
+  background-color: #f9b01f;
+  color: #fff;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  border: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 32px;
+  font-weight: 600;
+
+  transition: 500ms;
+}
+
+.mais a:hover {
+  cursor: pointer;
+  background-color: #e79a00;
+}
+
+.modal .modal-header {
+  background-color: #d7c4df;
+  color: #39396e;
+  font-size: 32px;
+
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+}
+
+.modal .modal-header .close {
+  position: absolute;
+  right: 12px;
+}
+
+.modal .modal-header button {
+  color: #39396e;
+}
+
+.modal .bg-modal {
+  background-color: #39396e;
+  color: #fff;
+}
+
+.modal .modal-footer {
+  background-color: #d7c4df;
+  color: #39396e;
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.modal a:hover {
+  color: #d7c4df;
+}
+
+.modal .modal-footer button{
+  padding: 10px 30px;
+  color: #d7c4df;
+  background-color: #39396e;
+  border: 0;
+  font-size: 24px;
+  font-weight: 500;
+  transition: 500ms;
+  border-radius: 10px;
+}
+
+.modal-footer button:hover {
+  background-color: #282853;  
+  cursor: pointer;
+}
+
+.modal-footer button:focus {
+  outline: 0;
+}
+
+.modal input {
+  margin: 10px;
+}
+
+.modal .groupTelefone input {
+  margin: 10px 0;
+}
+
+.modal .groupTelefone .cadastrarMais {
+  margin-top: 15px;
+}
+
+
+.modal .endereco input {
+  margin: 0;
+}
+
+
+.modal .endereco .groupEndereco {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.modal .cadastrarMais {
+  border: 0;
+  background-color: #f9b01f;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.modal .groupEndereco .cadastrarMais { 
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 580px){
+  .main .mais {
+    right: 16%;
+    
+  }
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8,
+.col-9, .col-10, .col-11, .col-12 {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+

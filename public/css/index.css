@@ -1,0 +1,53 @@
+.bg-index {
+  background: url("../img/index.png") no-repeat;
+  height: 100vh;
+  background-position: center;
+  background-size: contain;
+  overflow: hidden;
+}
+
+.bg-index .content-index {
+  transform: skewY(-4deg);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  font-weight: 600; 
+}
+
+.content-index span {
+  font-size: 32px;
+  color: #39396e;  
+}
+
+.content-index a {
+  text-decoration: none;
+}
+
+.content-index .button {
+  color: #fff;
+  font-size: 24px;
+  
+  background-color: #39396e;
+  width: 200px;
+  border: 0;
+  transition: 500ms;
+
+  margin-top: 30px;
+}
+
+.content-index .button:hover {
+  cursor: pointer;
+  background-color: #d7c4df;
+  color: #39396e;
+
+}
+
+@media only screen and (max-width: 600px) {
+  .bg-index {
+    background-size: auto;
+  }
+}
+

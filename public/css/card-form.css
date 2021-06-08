@@ -1,0 +1,59 @@
+.card-form { 
+  background-color: #39396e;
+  color: #fff;
+  font-weight: 600;
+}
+
+.card-form h1 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.card-form label {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card-form input {
+  margin-bottom: 20px;
+}
+
+.card-form button {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 600;
+  color: #39396e;
+  background-color: #d7c4dfb9;
+  transition: 500ms;
+  margin-top: 20px;
+}
+
+.card-form button:hover {
+  cursor: pointer;
+  background-color: #d7c4df;
+} 
+
+.card-form .cadastro {
+  margin-top: 15px;
+}
+
+.card-form a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.card-form a:hover {
+  color: #d7c4df;
+}
+
+.cadastro-sucesso {
+  background-color: rgba(0, 128, 0, 0.767);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  height: 30px;
+}
+
+
+
+

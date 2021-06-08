@@ -1,0 +1,232 @@
+<?php if($this->view->nomeContatoExistente == 'erro') { ?>
+  <script>
+    $(document).ready(function() {
+      $('#modalCadastrar').modal('show')
+    });
+  </script>
+<?php }?>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-md-10 col-sm-12 main">
+      <?php if($this->view->contatoCadastrado == 'success') { ?>
+        <div class="alert alert-success text-center">
+          Contato cadastrado!
+        </div>
+      <?php }?>
+      <div class="logout">
+        <a href="/sair"><i class="fas fa-sign-out-alt"> Sair</i></a>        
+      </div>
+      <!-- <form action="/listarModal" method="post">
+        <input type="text" name="id" id="id" value="25">
+        <button type="submit" class="btn btn-primary" >clica aqui </button>
+      </form> -->
+      <div class="header">
+        <div class="icon">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="text-white">
+          <h2><?= $_SESSION['nome'] ?></h2>
+        </div>
+
+        <div class="search">
+          <input id="inputPesquisa" type="text" placeholder="Pesquisar">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class=resultadoPesquisa>
+          <ul id="resultadoPesquisa">
+          </ul>
+        </div>
+      </div>
+      
+      <div class="content">        
+          <div>
+            <!-- <span>A</span> -->
+            <div class="contatos">
+              <ul class="lista">
+              
+              <?php foreach($this->view->contatos as $contato) { ?>                
+                <li>
+                  <a data-toggle="modal" data-target= "#modalContato" onclick="abrirModal(<?=$contato['id']?>)">
+                    <?= $contato['nome']?>
+                  </a>
+                </li>
+                <?php } ?>
+              </ul>   
+            </div>
+          </div>      
+       
+        <div class="mais">
+          <a data-toggle="modal" data-target=".modalCadastrar">+</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal apresentando contato -->
+<div class="modal fade modalContato" id="modalContato" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="nome-contato">Nome</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="container-fluid bg-modal">
+        <div class="row mt-5 mb-5 p-3">
+          <div class="col-12 text-center">
+            <h5>Telefone:</h5>
+            <h5 id="telefone-contato">telefone</h5>
+            <div id="telefones-modal"></div>
+            <br>
+            <h5>E-mail:</h5>
+            <h5 id="email-contato">email@email.com</h5>
+            <br>
+            <div id="enderecos-modal">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <form action="/apagarContato" method="post">
+          <input type="hidden" id="nomeInput" name="nomeInput" value="">
+          <button type="submit" class="text-danger">Apagar</button>
+        </form>        
+        <button type="button" data-dismiss="modal" onclick="closeModalContato()">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim modal apresentando contato -->
+
+<!-- Modal cadastrar -->
+<div class="modal fade modalCadastrar" id="modalCadastrar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Novo Contato</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" onclick="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <?php if($this->view->nomeContatoExistente == 'erro') { ?>
+        <div class="text-center">
+        <span class="text-danger">*Nome de contato já existente</span>
+        </div>
+      <?php }?>
+      
+      <form action="/salvarContato" method="post" class="bg-modal">
+        <div class="container-fluid ">
+          <div class="row mt-5 mb-5 p-3">
+            <div class="col-12 text-center">
+              <div class="row justify-content-center">
+                <input class="form-control" type="text" name="nome" id="nome" placeholder="Nome" required>
+              </div>
+              <div class="row justify-content-center">
+                <input class="form-control" type="email" name="email" id="email" placeholder="E-mail" required >
+              </div>
+              <div id="ntelefone">
+                <div class="row justify-content-center groupTelefone">
+                  <div class="col-11">
+                    <input class="form-control" type="text" name="telefone1" id="telefone1" placeholder="Telefone" required>
+                  </div>
+                  <div class="col-1">
+                    <button type="button" class="cadastrarMais" onclick="addTelefone()">+</button>
+                  </div>
+                </div>
+                <div id="maisTelefones">
+
+                </div>
+              </div>            
+  
+              <div class="endereco">
+                <label for="">Endereço:</label>  
+                <div class="row justify-content-center groupEndereco">  
+                  <div class="col-3">
+                    <input class="form-control" type="text" name="cep1" id="cep1" placeholder="CEP" onblur="getEnderecoPorCep(this.value, id)">
+                  </div>      
+                  <div class="col-6">
+                    <input class="form-control" type="text" name="rua1" id="rua1" placeholder="Rua">
+                  </div>
+                  <div class="col-2">
+                    <input class="form-control" type="text" name="numero1" id="numero1" placeholder="Nº">
+                  </div>
+                  <div class="col-1">
+                    <button type="button" class="cadastrarMais" onclick="addEndereco()">+</button>  
+                  </div>
+                </div>
+  
+                <div class="row justify-content-center">
+                  <div class="col-4">
+                    <input class="form-control" type="text" name="bairro1" id="bairro1" placeholder="Bairro">
+                  </div>
+                  <div class="col-6">
+                    <input class="form-control" type="text" name="cidade1" id="cidade1" placeholder="Cidade">
+                  </div>
+                  <div class="col-2">
+                    <input class="form-control" type="text" name="uf1" id="uf1" placeholder="UF">
+                  </div>
+                </div>
+                <div id="maisEndereco">
+  
+                </div>
+              </div>               
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="submit" class="text-success">Salvar</button>
+          <button type="button" class="text-danger" data-dismiss="modal" onclick="closeModal()">Cancelar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Fim modal cadastrar -->
+
+<script type="text/javascript">
+  $("#telefone1").mask("(00) 00000-0000");
+  $("#cep1").mask("00000-000")
+
+  $('#inputPesquisa').on('input', function () {    
+    var key = $(this).val();
+
+    if(key == ''){      
+      let pesquisa = document.getElementById('resultadoPesquisa');
+      let pai = pesquisa.parentNode
+      
+      if(pai) {
+        pai.removeChild(pesquisa);
+        let ulPesquisa = document.createElement('ul');
+        ulPesquisa.id = 'resultadoPesquisa';
+        pai.appendChild(ulPesquisa);
+      }
+
+    } else {
+      data = {
+        key: key
+      }
+
+      $.post('/pesquisar', data, function(pesquisa){
+        if(pesquisa == "") {
+          $("#resultadoPesquisa").html("<li>Nenhum contato encontrado.</li>");
+        }
+        else {
+          $("#resultadoPesquisa").html(pesquisa);
+        }
+      });
+    }
+  })
+</script>
+
+
+
+
+
